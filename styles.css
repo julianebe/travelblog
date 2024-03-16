@@ -1,0 +1,260 @@
+/*import font for header span*/
+@import url('https://fonts.googleapis.com/css2?family=Splash&display=swap');
+
+/*set the font and a very light blue as background (remembering on a winter sky)*/
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 125%;
+    background-color: rgb(241, 251, 255);
+}
+
+/*set the body*/
+body {
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 90rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(71, 71, 71, .35);
+}
+
+/*put margins to the header do differentiate to the body and center the text*/
+header {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    border-top: 6px double currentColor;
+    border-bottom: 3px solid currentColor;
+    text-align: center;
+}
+
+/*change the font size and weight and add letter-spacing*/
+header h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 3rem;
+    font-weight: normal;
+}
+
+/*subtitle in same color as the shadow and
+font changed into a more handwriting like (imported from google fonts)*/
+header span {
+    color: rgb(71, 71, 71);
+    font-family: "Splash", 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+/* Define container to hold left, center and right sections */
+.container {
+    display: grid;
+    /*  */
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: 1rem;
+    /* Add a gap of 1rem between columns */
+
+}
+
+/* Define left section */
+.left {
+    grid-column: 1/ span 3;
+    padding: 20px;
+    /* Add some padding */
+    border-right: 1px solid #ccc;
+
+}
+
+/* Define center section */
+.center {
+    grid-column: 4/ span 5;
+    padding: 20px;
+    /* Add some padding */
+    overflow-y: auto;
+    height: 100vh;
+
+}
+
+/* Define right section */
+.right {
+    grid-column: 9/ span 2;
+    padding: 20px;
+    /* Add some padding */
+    border-left: 1px solid #ccc;
+}
+
+/*set margins to the chapters and a line to separate them (only top line is needed)*/
+.chapter {
+    margin-bottom: 1rem;
+}
+
+hr {
+    display: block;
+    border-width: 1px 0 0;
+    border-color: #ccc;
+    border-style: solid;
+}
+
+/*create the second level title used for chapters
+set the margins to the text
+differentiate from normal text by size and weight*/
+h2 {
+    margin: 0 0 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+/*create the third level title used for subchapters
+set the margins to the text
+differentiate from normal text by size and weight*/
+h3 {
+    margin: 0 0 2rem;
+    margin-top: 1rem;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+/*create a box for a calendar sheet with bottom marigin*/
+.calendar_sheet {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/*place the month name in the center with sligthly difference to the h3 (even though it's the basis)*/
+.month {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/*create a grid where to place the day boxes in*/
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/*place the day in a box and write the text in the center*/
+.day {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+/*to distinguish set a background color for the weekday name boxes 
+and the script color*/
+.day.head {
+    background-color: #777;
+    color: white;
+}
+
+/*boxes of non-days are not shown, 
+so that the calendar starts on the right day of the week*/
+.day.empty {
+    visibility: hidden;
+}
+
+/* Tooltip container */
+.day.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text */
+.day.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(241, 251, 255);
+    color: #777;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+/* Show the tooltip text when hovering over the tooltip container */
+.day.tooltip:hover .tooltiptext {
+    visibility: visible;
+
+}
+
+/*define the size of the map and put a border*/
+.map_container {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+}
+
+details {
+    margin: 0 0 2rem;
+    margin-top: 1rem;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+summary {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    padding: 20px;
+    background-color: rgb(241, 251, 255);
+    border: 1px solid rgb(241, 251, 255);
+    outline: none;
+}
+
+summary:hover,
+summary:focus {
+    border: 1px solid #777;
+}
+
+details[open] summary {
+    background-color: rgb(241, 251, 255);
+    border: 1px solid #777;
+}
+
+details[open] {
+    background: white;
+
+}
+
+/*Text of the entries are set in justification*/
+.entry {
+    text-align: justify;
+    padding: 20px;
+    border-top: 1px solid rgb(241, 251, 255);
+    border-left: 1px solid rgb(241, 251, 255);
+    border-right: 1px solid rgb(241, 251, 255);
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #777;
+    color: white;
+}
+
+/*Footer separated from the rest of the body*/
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 6px double currentColor;
+}

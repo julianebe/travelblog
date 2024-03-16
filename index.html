@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="images/plane-solid.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <title>Juliane's Travel blog</title>
+</head>
+
+<body>
+    <header class="entete">
+        <h1 class="entete__nom">Blog voyage de Juliane</h1>
+        <span class="entete__titre">Canada, j'arrive !</span>
+    </header>
+
+    <!--La site web est organiser dans des chapitres.-->
+    <!--Elle est organisée en trois collones pour avoir tous dans une vue directement-->
+    <div class="container">
+        <div class="left">
+            <!--calandrier-->
+            <!--Il est possible de voir des boxes en aller sur des dates qui disent ce que j'avait fait ce jour la-->
+            <!--En cliquant sur la date l'entrée du carnet s'ouvre-->
+
+            <section class="chapter">
+                <h2 id="cal">Calendrier</h2>
+
+                <div class="calendar_sheet" id="jan">
+                    <h3 class="month">Janvier 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day">1</div>
+                        <div class="day tooltip" data-reference="#flight">2 <span class="tooltiptext">Le Voyage</span>
+                        </div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day tooltip" data-reference="#first_days">6 <span class="tooltiptext">Les premiers
+                                jours à Montréal</span></div>
+                        <div class="day tooltip" data-reference="#first_days">7 <span class="tooltiptext">Les premiers
+                                jours à Montréal</span></div>
+                        <div class="day tooltip" data-reference="#first_days">8 <span class="tooltiptext">Les premiers
+                                jours à Montréal</span></div>
+                        <div class="day tooltip" data-reference="#first_days">9 <span class="tooltiptext">Les premiers
+                                jours à Montréal</span></div>
+                        <div class="day tooltip" data-reference="#university">10<span class="tooltiptext">La Vie
+                                universitaire</span></div>
+                        <div class="day tooltip" data-reference="#university">11 <span class="tooltiptext">La Vie
+                                universitaire</span></div>
+                        <div class="day tooltip" data-reference="#first_days">12<span class="tooltiptext">Les premiers
+                                jours à Montréal</span></div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day tooltip" data-reference="#first_days">16<span class="tooltiptext">Découverte de
+                                la cuisine étudiante</span></div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day tooltip" data-reference="#mont_orford">21<span class="tooltiptext">Mont
+                                Orford</span></div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day tooltip" data-reference="#mont_bromont">28<span class="tooltiptext">Mont
+                                Bromont</span></div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day">31</div>
+                    </div>
+                </div>
+                <div class="calendar_sheet" id="feb" style="display: none;">
+                    <h3 class="month">Février 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day">1</div>
+                        <div class="day tooltip" data-reference="#igloofest">2<span class="tooltiptext">Match de hockey
+                                Carabins</span></div>
+                        <div class="day tooltip" data-reference="#igloofest">3<span class="tooltiptext">Igloofest</span>
+                        </div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day tooltip" data-reference="#quebec">8<span class="tooltiptext">Québec</span></div>
+                        <div class="day tooltip" data-reference="#quebec">9<span class="tooltiptext">Québec</span></div>
+                        <div class="day tooltip" data-reference="#quebec">10<span class="tooltiptext">Québec</span>
+                        </div>
+                        <div class="day tooltip" data-reference="#sunday">11<span class="tooltiptext">Dimanche en
+                                février</span></div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day tooltip" data-reference="#snowshoe">16<span class="tooltiptext">Randonnée en
+                                raquette</span></div>
+                        <div class="day tooltip" data-reference="#domaine_enchanteur">17<span
+                                class="tooltiptext">Patiner au Domaine Enchanteur</span></div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day tooltip" data-reference="#cinema">20<span class="tooltiptext">Mardi du
+                                Cinema</span></div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                    </div>
+                </div>
+                <div class="calendar_sheet" id="mar" style="display: none;">
+                    <h3 class="month">Mars 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day">31</div>
+                    </div>
+                </div>
+                <div class="calendar_sheet" id="apr" style="display: none;">
+                    <h3 class="month">Avril 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                    </div>
+                </div>
+                <div class="calendar_sheet" id="mai" style="display: none;">
+                    <h3 class="month">Mai 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                        <div class="day">31</div>
+                    </div>
+                </div>
+                <div class="calendar_sheet" id="jun" style="display: none;">
+                    <h3 class="month">Juin 2024</h3>
+                    <div class="days">
+                        <div class="day head">Lun</div>
+                        <div class="day head">Mar</div>
+                        <div class="day head">Mer</div>
+                        <div class="day head">Jeu</div>
+                        <div class="day head">Ven</div>
+                        <div class="day head">Sam</div>
+                        <div class="day head">Dim</div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day">29</div>
+                        <div class="day">30</div>
+                    </div>
+                </div>
+                <button id="prevMonth">&larr;</button>
+                <button id="nextMonth">&rarr;</button>
+
+
+            </section>
+            <hr>
+            <!--Carte interactive-->
+            <!--Le Map montre des points où j'était-->
+            <section class="chapter">
+                <h2 id="map">Montréal</h2>
+                <div class="map_container" id="map_container"></div>
+                <p>Zoome pour voir les lieux j'étais</p>
+            </section>
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script src="https://unpkg.com/leaflet-gesture-handling"></script>
+            <script src="https://unpkg.com/leaflet.locatecontrol"></script>
+            <script src="script_travelblog.js"></script>
+
+
+        </div>
+        <div class="center">
+            <!--Travel journal-->
+            <!--Le journal est separer dans des parties selon des évènements et du temps-->
+            <!--Chaque section (a une id pour qu'on puisse le referencer au calendrier)
+                a un titre et un texte (journal entry) en plus des photos ou des vidéos-->
+            <!--les entrées sont collapsé pour avoir une vue plus organisé en cliquant sur le titre on voir tous l'entrée-->
+            <div class="chapter">
+                <h2 id="traveljournal">Carnet de Voyage</h2>
+                <section id="description">
+                    <p>Salut, je m'appelle Juliane et je fais un semestre d'échange à l'Université de Montréal.</p>
+                    <p>Accompagne-moi dans mon voyage.</p>
+                </section>
+                <section id="flight">
+                    <details>
+                        <summary>Le Voyage</summary>
+                        <div class="entry">
+                            <p>Pour moi, c'est la première fois que je suis aussi loin de chez moi et c'est aussi la
+                                première fois que je suis en dehors de l'Europe.</p>
+                            <p>Je ne suis pas un grand fan de l'avion, mais le voyage a été étonnamment agréable. </p>
+                            <p>Le premier janvier, je suis partie de chez moi et j'ai pris le train pour Mayence. J'ai
+                                pu y passer la nuit chez des potes afin d'arriver tôt le lendemain matin à l'aéroport de
+                                Francfort. Bien sûr, j'y suis arrivée beaucoup trop tôt. J'ai donc pu prendre un petit
+                                déjeuner, enregistrer mes bagages et m'orienter tranquillement. </p>
+                            <p>Le premier choc a eu lieu au contrôle de sécurité, j'avais oublié de mettre mes ciseaux à
+                                ongles dans la grande valise, mais la lame était encore dans la zone autorisée et j'ai
+                                pu me rendre à la porte sans problème.</p>
+                            <p>L'embarquement a été étonnamment rapide. J'ai rapidement pris une photo de l'avion en
+                                montant à bord et j'étais déjà à ma place. Le départ a cependant été retardé d'une
+                                heure. </p>
+                            <p>Huit heures plus tard, nous avions atterri à l'aéroport de Montréal et j'ai regardé
+                                presque toute la première saison de la série <a
+                                    href="https://youtu.be/MXy4PsQ2ymI?si=WyAD-IFqawB5kJYV" target="_blank">"The
+                                    Great"</a>.</p>
+                            <p>De l'aéroport, j'ai passé les contrôles d'immigration et, après avoir cherché un peu
+                                partout, j'ai trouvé la solution pour me rendre à l'appartement : uber (heureusement que
+                                l'aéroport a le wifi).</p>
+                            <p>La journée était déjà terminée et je me suis couchée, étant complètement crevée.</p>
+                            <img src="images\20240102_airplane.jpg" alt="photo de l'entrée à l'avion" width="30%"
+                                height="30%">
+                        </div>
+                    </details>
+                </section>
+
+                <section id="first_days">
+                    <details>
+                        <summary>Les premiers jours à Montréal</summary>
+                        <div class="entry">
+                            <p>J'ai passé les premiers jours à m'adapter à mon nouvel environnement. Je suis allée faire
+                                des courses et j'ai repéré les magasins. Je me suis beaucoup promenée dans le quartier
+                                et j'ai pu m'en accommoder. Quand je suis arrivée, il n'y avait pas encore de neige,
+                                mais quelques jours plus tard, il a bien neigé et j'ai pu faire des promenades dans la
+                                neige. Que ce soit au bord de la fleuve ou du canal, je peux recommander les deux. </p>
+                            <p>J'ai également participé un jour aux journées de bienvenue de l'université. C'est là que
+                                j'ai fait la connaissance des premières potes. Une semaine plus tard, il y avait aussi
+                                un rallye sur le campus. Notre groupe a gagné et chacun a reçu une bouteille à boire en
+                                cadeau (très pratique). J'ai également participé à une cuisine étudiante. On y cuisine à
+                                l'université avec d'autres étudiants et on mange ensemble. Ce jour-là, il y avait un
+                                goûter avec des muffins au chocolat et du chocolat chaud.</p>
+
+                            <img src="images/20240106_mtl_first_snow.jpg" alt="permier neige à Montréal" width="30%"
+                                height="30%">
+                            <img src="images/20240106_udem.jpeg" alt="Université de Montréal" width="30%" height="30%">
+                            <img src="images/20240106_udem_quiz.jpeg"
+                                alt="Quiz pour les nouveaux étudiants internationaux" width="30%" height="30%">
+                            <img src="images/20240107_mtl_fleuve.jpeg" alt="Montréal fleuve Saint Laurent" width="30%"
+                                height="30%">
+                            <img src="images/20240107_mtl_parc_arthur_therrien.jpeg" alt="Montréal Parc Arthur Therrien"
+                                width="30%" height="30%">
+                            <img src="images/20240108_mtl_canal.jpg" alt="Montréal Canal Lachine" width="30%"
+                                height="30%">
+                            <img src="images/20240108_mtl_canal_skyline.jpg" alt="Montréal skyline vu du canal Lachine"
+                                width="30%" height="30%">
+                        </div>
+                    </details>
+                </section>
+
+                <section id="university">
+                    <details>
+                        <summary>La Vie universitaire</summary>
+                        <div class="entry">
+                            <p>Ce semestre, j'ai 5 cours, dont 3 sont des petits ateliers qui n'ont lieu que 3 fois
+                                (mais pour 5 heures). J'ai donc au maximum 3 cours en une semaine au total. Le premier
+                                cours est un cours de sciences de l'information. Celui-ci est malheureusement nettement
+                                en dessous des attentes. Par exemple, le premier cours ne portait que sur "comment créer
+                                un dossier sur l'ordinateur" et "comment nommer les documents", et le cours n'est pas
+                                devenu plus exigeant par la suite. En revanche, les cours durent beaucoup plus longtemps
+                                qu'à Vienne. Normalement, on a trois heures (si on a de la chance, avec une pause de 10
+                                à 20 minutes). Mais le cours a un TP en plus, c'est pourquoi il va de 8h30 à 15h30 le
+                                jeudi (une heure de pause à midi). </p>
+                            <p>L'autre cours que j'ai tout le semestre est "Lectures
+                                numériques", c'est un plus grand défi pour moi, car il s'agit quand même beaucoup de
+                                théorie littéraire, ce dont je n'ai aucune expérience et qui, comme je l'ai remarqué,
+                                n'est pas ma passion. Le cours dure trois heures et il s'avère que je suis la seule
+                                étudiante à suivre ce cours. Il s'agit donc d'une heure de discussion hebdomadaire entre
+                                ma professeure et moi. Comme je suis seule, le cours est assez intensif, car il faut
+                                faire attention tout le temps et on passe beaucoup de temps à lire pour se préparer.
+                            </p>
+                            <p>Les trois ateliers que je prends sont mes cours préférés ici à Montréal. Ils font tous
+                                partie du programme Humanités numériques et sont très orientés vers la pratique. J'y
+                                apprends beaucoup et même s'ils sont longs (9h30-15h30, y compris une heure de pause),
+                                je me réjouis de suivre les cours. Les ateliers ne sont pas non plus très fréquentés
+                                (2-3 étudiants et l'enseignant), mais cela crée une atmosphère de travail très agréable
+                                et à midi, nous mangeons tous ensemble. Le premier atelier portait sur l'open data, le
+                                deuxième sur la création de sites web et le troisième sur l'analyse textuelle
+                                informatisée.
+                            </p>
+                            <table>
+                                <tr>
+                                    <th style="width:50%">Mercredi</th>
+                                    <th style="width:50%">Jeudi</th>
+                                </tr>
+                                <tr>
+                                    <td><b>9h30 à 11h30:</b> <br>Atelier Humanités numériques</td>
+                                    <td><b>8h30 à 11h30:</b> <br>Science d'information</td>
+                                </tr>
+                                <tr>
+                                    <td><b>12h30 à 15h30:</b> <br> Atelier Humanités numériques</td>
+                                    <td><b>12h30 à 15h30:</b> <br>Science d'information</td>
+                                </tr>
+                                <tr>
+                                    <td><b>15h30 à 18h30:</b> <br>Lectures numériques</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <img src="images/20240214_mtl_way_uni.jpeg" alt="Chemin vers l'université" width="30%">
+                        </div>
+                    </details>
+                </section>
+
+                <section id="mont_orford">
+                    <details>
+                        <summary>Mont Orford</summary>
+                        <div class="entry">
+                            <p>La première grande sortie a été une randonnée hivernale dans le parc national du Mont
+                                Orford. L'excursion a été organisée par un groupe universitaire. Le matin, nous nous
+                                sommes retrouvés à l'université et avons pris un bus écolière typique jaune en direction
+                                du sud pendant deux heures. Il n'y avait pas assez de neige pour essayer la randonnée en
+                                raquettes, mais avec des crampons, nous avons simplement fait une randonnée normale le
+                                long d'un lac.</p>
+                            <p>Pendant la randonnée, j'ai fait la connaissance de gens qui sont devenus
+                                mes amis. Ce sont tous des étudiants en échange. Nous avons ensuite passé des soirées au
+                                bar et fait du patin à glace ensemble.</p>
+                            <img src="images/20240121_mont_orford_bus.jpg" alt="Le Bus" width="30%">
+                            <img src="images/20240121_mont_orford_lake_left.jpeg" alt="Le Lac" width="50%">
+                            <img src="images/20240121_mont_orford_lake_right.jpeg" alt="Le Lac" width="50%">
+                            <img src="images/20240121_mont_orford_path.jpg.jpeg" alt="Le chemin dans le forêt"
+                                width="30%">
+                            <video controls width="30%">
+                                <source src="images/20240127_mtl_ice_skating.mp4" type="video/mp4">
+                                Video du patin à Glace à l'Esplanade tranquille
+                            </video>
+                        </div>
+                    </details>
+                </section>
+
+                <section id="mont_bromont">
+                    <details>
+                        <summary>Mont Bromont</summary>
+                        <div class="entry">
+                            <p>La sortie suivante (déjà fin janvier, comme le temps passe vite) a été dédiée au ski. Le
+                                matin, le bus jaune est revenu nous chercher pour nous emmener à la station de ski du
+                                Mont Bromont. Avec des amis (des premiers événements de bienvenue), nous avons dévalé
+                                les pistes ensemble. </p>
+                            <p>Le domaine skiable n'a rien à envier aux Alpes. De plus, il faisait
+                                malheureusement un peu trop chaud et la neige n'était pas optimale. Le plus grand
+                                avantage, ce sont les heures d'ouverture : on peut non seulement skier toute la journée,
+                                mais aussi après la tombée de la nuit, car toutes les pistes sont éclairées. Cela crée
+                                une atmosphère très particulière. Nous avons ensuite terminé la journée de ski avec un
+                                chocolat chaud au café du sommet, avec une fenêtre panoramique sur les pistes éclairées.
+                                Et même le prix du chocolat chaud n'était que la moitié de ce que l'on paie dans les
+                                Alpes. </p>
+                            <img src="images/20240128_mont_bromont_ski_station.jpeg" alt="La station Mont Bromont"
+                                width="30%">
+                            <img src="images/20240128_mont_bromont_ski_piste.jpeg" alt="Une piste en journée"
+                                width="30%">
+                            <img src="images/20240128_mont_bromont_ski_piste_night.jpeg" alt="Une piste en nuit"
+                                width="30%">
+                            <img src="images/20240128_mont_bromont_vue.jpeg" alt="La vue du Mont Bromont" width="50%">
+                            <img src="images/20240128_mont_bromont_ski_top.jpeg" alt="La dernière descente" width="30%">
+                            <video width="30%">
+                                <source src="images/20240128_mont_bromont_ski_video.mp4" type="video/mp4">
+                                Video du ski à Mont Bromont
+                            </video>
+
+                        </div>
+                    </details>
+                </section>
+
+                <section id="igloofest">
+                    <details>
+                        <summary>Fin de semaine hivernal à Montréal</summary>
+                        <div class="entry">
+                            <p>Le week-end suivant était également chargé de programmes. Le cours de ski de fond prévu
+                                n'a pas pu avoir lieu en raison du manque de neige. Mais j'ai encouragé l'équipe
+                                universitaire de hockey sur glace, les Carabins, lors d'un match à domicile, ils ont
+                                malheureusement quand même perdu. </p>
+                            <p>Le véritable point fort du week-end était l'Igloofest,
+                                un festival de musique en plein hiver. Il faisait froid, la musique n'était pas à cent
+                                pour cent à mon goût, mais c'était très amusant et j'ai passé une bonne soirée avec des
+                                amis.</p>
+                            <video controls width="30%">
+                                <source src="images/20240202_mtl_carabins_video.mp4" type="video/mp4">
+                                Video des Carabins
+                            </video>
+                            <img src="images/20240203_mtl_igloofest_skyline.jpeg" alt="Igloofest Skyline" width="30%">
+                            <br>
+                            <img src="images/20240203_mtl_igloofest_entrance.jpg" alt="Igloofest" width="30%">
+                            <img src="images/20240203_mtl_igloofest_scene.jpeg" alt="Scène d'Igloofest" width="50%">
+
+                        </div>
+                    </details>
+                </section>
+
+                <section id="quebec">
+                    <details>
+                        <summary>Québec Ville</summary>
+                        <div class="entry">
+                            <p>Le week-end suivant a commencé plus tôt avec mon anniversaire. Je l'ai fêté au Québec et
+                                j'y ai passé trois jours avec des amis. </p>
+                            <p>Le premier jour, nous avons visité le Carnaval
+                                de Québec. Vraiment très impressionnant avec toutes les sculptures de glace et le
+                                château de glace. Et une bonne ambiance avec beaucoup de musique et de petits
+                                événements. Malheureusement, je ne pouvais plus être à Québec pour le défilé. </p>
+                            <p>Le
+                                deuxième jour, nous sommes allés aux Chutes Montmorency, qui se trouvent à proximité et
+                                où l'on peut facilement aller avec le bus de la ville. C'était vraiment beau. La chute
+                                était à moitié gelée. Avec le pont suspendu, on pouvait marcher directement au-dessus de
+                                la chute et, vue d'en bas, la chute prend une toute autre ampleur, elle est plus haute
+                                que les chutes du Niagara, ce qui est mentionné partout. L'eau va directement dans le
+                                fleuve St-Laurent, qui était aussi très impressionnant, non seulement il est énorme et
+                                super large, mais à ce moment-là, on voyait beaucoup de blocs de glace flotter. Une
+                                image que je ne connais que par les films et qui m'a donné un sentiment de "pôle Nord".
+                            </p>
+                            <p>Le troisième jour, j'ai participé à une petite visite guidée de la ville et j'ai
+                                continué à explorer la ville, ce que je n'avais pas pu faire le premier jour.</p>
+                            <p>Clin d'œil : descente en luge (toboggan) sur la promenade du fleuve avec vue sur le
+                                château de Frontenac</p>
+                            <img src="images/20240208_quebec_icecastle.jpeg" alt="Carnaval: Château en glace"
+                                width="50%">
+                            <img src="images/20240208_quebec_icesculpture.jpeg" alt="Carnaval: Sculpute de glace"
+                                width="30%">
+                            <img src="images/20240209_chute_montmorency_bridge.jpeg"
+                                alt="Chute Montmorency vue sur le top" width="30%">
+                            <video controls width="30%">
+                                <source src="images/20240209_chute_montmorency_above.mp4" type="video/mp4">
+                                Video du chute Montmorency du top
+                            </video>
+                            <video controls width="50%">
+                                <source src="images/20240209_chute_montmorency_valley.mp4" type="video/mp4">
+                                Video du chute Montmorency du bas
+                            </video>
+                            <img src="images/20240209_quebec_toboggan.jpeg" alt="Toboggan" width="30%">
+                            <img src="images/20240210_quebec_frontenac.jpeg" alt="Château de Frontenac" width="30%">
+                            <img src="images/20240210_quebec_fleuve.jpeg" alt="Fleuve St-Laurent" width=50%">
+                            <img src="images/20240210_quebec_petit_champlain.jpeg" alt="Quartier Petit Champlain"
+                                width="30%">
+                        </div>
+                    </details>
+                </section>
+
+                <section id="sunday">
+                    <details>
+                        <summary>Dimanche en février</summary>
+                        <div class="entry">
+                            <p>Juste après Québec, la prochaine escapade était déjà prévue le dimanche. Nous devions
+                                faire de l'escalade sur glace, mais malheureusement, elle a été annulée à la dernière
+                                minute et nous avons donc eu une journée de libre. Nous avons décidé d'aller faire du
+                                patin à glace sur le Mont Royal et d'essayer la piste de luge. </p>
+                            <p>Le soir, nous avons eu le
+                                temps de regarder le Superbowl dans un pub avec des nuggets de chou-fleur à volonté.</p>
+                            <p>Bilan : une super soirée entre amis. Le Superbowl est composé à 80% de publicité et
+                                personne ne comprend vraiment les règles. Le spectacle est cool, mais aussi court.
+                                C'était une expérience, mais je n'en ai pas besoin chaque année.</p>
+                        </div>
+                        <img src="images/20240211_mtl_lac_castor.jpeg" alt="Mont Royal: Lac castor" width="30%">
+                        <img src="images/20240211_mtl_mont_royal_slide.jpeg" alt="Mont Royal: Piste de Luge"
+                            width="50%">
+                        <img src="images/20240211_mtl_superbowl.jpeg" alt="Superbowl début" width="30%">
+                        <video controls width="30%">
+                            <source src="images/20240211_mtl_superbowl_show.mp4" type="video/mp4">
+                            Video du Superbowl show
+                        </video>
+                    </details>
+                </section>
+
+                <section id="snowshoe">
+                    <details>
+                        <summary>Randonnée en raquette</summary>
+                        <div class="entry">
+                            <p>Le mois de février a été riche en événements, autour du troisième week-end, il y avait à
+                                nouveau beaucoup de choses de prévues. Ainsi, une randonnée en raquettes sur le Mont
+                                Royal de nuit. En effet, nous n'avions pas de lampes, mais la neige était si claire, et
+                                les lumières de la ville aussi, que l'on pouvait quand même voir suffisamment. La vue
+                                sur Montréal depuis le Belvédère, avec tous les gratte-ciel et le fleuve au loin, était
+                                également très exceptionnelle. La randonnée en raquettes n'est pas vraiment difficile,
+                                il faut d'abord s'habituer à la taille des chaussures, mais cela va vraiment vite. Mais
+                                je pense qu'avec encore plus de neige, c'est encore plus amusant et peut-être même que
+                                c'est mieux dans la neige profonde...</p>
+                            <img src="images/20240216_mtl_snowshoe.jpeg" alt="Les raquettes" width="30%">
+                            <video controls width="30%">
+                                <source src="images/20240216_mtl_snowshoe_video.mp4" type="video/mp4">
+                                Video du Randonnée en raquettes
+                            </video>
+                            <img src="images/20240216_mtl_mont_royal_belvedere.jpeg" alt="Vue de Belvedere" width="50%">
+                        </div>
+                    </details>
+                </section>
+
+                <section id="domaine_enchanteur">
+                    <details>
+                        <summary>Domaine Enchanteur</summary>
+                        <div class="entry">
+                            <p>Samedi, une nouvelle excursion était prévue. Cette fois-ci, nous sommes allés au Domaine
+                                Enchanteur, une forêt (avec des enclos pour animaux) dont les chemins sont entièrement
+                                recouverts de glace et où l'on se déplace en patins à glace. C'était quelque chose de
+                                très extraordinaire, et c'était très amusant, même après des heures, on ne s'ennuyait
+                                pas. Les photos parlent d'elles-mêmes.</p>
+                            <video controls width="50%">
+                                <source src="images/20240217_domaine_enchanteur_vid_short.mp4" type="video/mp4">
+                                Video du Domaine Enchanteur patin à glace
+                            </video>
+                            <video controls width="30%">
+                                <source src="images/20240217_domaine_enchanteur_snow_vid_short.mp4" type="video/mp4">
+                                Video du Domaine Enchanteur en neige
+                            </video>
+                        </div>
+                    </details>
+                </section>
+
+                <section id="cinema">
+                    <details>
+                        <summary>Mardi du Cinema</summary>
+                        <div class="entry">
+                            <p>En février, les cinémas Cineplexx de Montréal avaient mis en place une promotion
+                                permettant d'aller au cinéma le mardi pour 5 dollars. Je n'en ai profité qu'une seule
+                                fois, mais cela vaut la peine. Je suis allée voir Wonka et je n'ai pas été déçue.</p>
+                            <img src="images/20240220_mtl_cinema_wonka.jpg.jpeg" alt="film Wonka" width="30%">
+                        </div>
+                    </details>
+                </section>
+                <section id="description">
+                    <p>C'était les deux premiers mois de mon semestre à l'étranger, la moitié est déjà passée et
+                        quelques expériences m'attendent encore dans la deuxième moitié. En premier lieu, la semaine de
+                        relâche. Et quand le semestre sera terminé, il y aura encore de grands voyages.</p>
+                </section>
+            </div>
+        </div>
+
+        <!--Bucket list-->
+        <div class="right">
+            <div class="chapter">
+                <h2 id="bucket_list">Bucket List</h2>
+                <section class="bucket_list">
+                    <br>
+                    <section class="places_see">
+                        <!--header est en dehors de la liste, de sorte que seuls les puces sont indentées-->
+                        <h3 id="places">Lieux que je veux voir</h3>
+                        <ul>
+                            <li>Ottawa</li>
+                            <li>Toronto</li>
+                            <li>Chutes de Niagara</li>
+                            <li>New York</li>
+                            <li>Mont Tremblant</li>
+                            <li>Parc Omega</li>
+                        </ul>
+                    </section>
+                    <section class="things_do">
+                        <h3 id="things">Ce que je veux faire</h3>
+                        <ul>
+                            <li>Ski de Fond</li>
+                            <li>Escalade sur Glace</li>
+                            <li>Cabane à Sucre</li>
+                            <li>Couché de Soleil à Mont Royal</li>
+                        </ul>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Juliane Benson - Mon semestre à Montréal
+    </footer>
+
+</body>
+
+</html>
